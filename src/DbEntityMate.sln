@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbEntityMate", "DbEntityMate\DbEntityMate.csproj", "{84E8FB53-9CC6-42A9-8E0C-99BEB181D68C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbEntityMate.UnitTests", "DbEntityMate.UnitTests\DbEntityMate.UnitTests.csproj", "{C0302FA7-2898-4A78-87D7-F4ACC3D737F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{84E8FB53-9CC6-42A9-8E0C-99BEB181D68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E8FB53-9CC6-42A9-8E0C-99BEB181D68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84E8FB53-9CC6-42A9-8E0C-99BEB181D68C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0302FA7-2898-4A78-87D7-F4ACC3D737F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0302FA7-2898-4A78-87D7-F4ACC3D737F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0302FA7-2898-4A78-87D7-F4ACC3D737F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0302FA7-2898-4A78-87D7-F4ACC3D737F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
