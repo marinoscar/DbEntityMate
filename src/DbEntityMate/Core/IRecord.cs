@@ -7,6 +7,11 @@ namespace DbEntityMate.Core
     public interface IRecord
     {
         /// <summary>
+        /// Gets the dictionary of fields for this record.
+        /// </summary>
+        IEnumerable<KeyValuePair<string, object?>> Fields { get; }
+
+        /// <summary>
         /// Gets or sets the value of a property by its name.
         /// </summary>
         /// <param name="name">The name of the property.</param>

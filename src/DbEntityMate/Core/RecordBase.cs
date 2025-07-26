@@ -34,6 +34,11 @@ namespace DbEntityMate.Core
         }
 
         /// <summary>
+        /// Gets the dictionary of fields for this record.
+        /// </summary>
+        public IEnumerable<KeyValuePair<string, object?>> Fields => _fields;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RecordBase"/> class.
         /// Generates a unique <see cref="Id"/> using the provided <see cref="IKeyProvider"/>,
         /// and sets the creation and modification timestamps to the current UTC time.

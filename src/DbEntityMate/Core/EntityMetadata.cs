@@ -60,5 +60,14 @@ namespace DbEntityMate.Core
             get => (string?)this[nameof(Schema)];
             set => this[nameof(Schema)] = value;
         }
+
+        /// <summary>
+        /// Gets or sets the list of fields associated with the entity.
+        /// </summary>
+        public List<FieldMetadata> Fields
+        {
+            get => (List<FieldMetadata>)this[nameof(Fields)] ?? new List<FieldMetadata>();
+            set => this[nameof(Fields)] = value;
+        }
     }
 }
