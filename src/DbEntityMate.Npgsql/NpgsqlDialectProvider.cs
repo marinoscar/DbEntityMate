@@ -21,7 +21,7 @@ namespace DbEntityMate.Npgsql
             for (int i = 0; i < entity.Fields.Count; i++)
             {
                 var field = entity.Fields[i];
-                sb.Append($"    \"{field.Name}\" {GetPostgresFieldDefinition(field)}");
+                sb.Append($"    \"{field.Name}\" {MapField(field)}");
 
                 if (!field.IsRequired)
                     sb.Append(" NOT NULL");
@@ -88,9 +88,7 @@ namespace DbEntityMate.Npgsql
             return sb.ToString();
         }
 
-        
-
-        private string GetPostgresFieldDefinition(FieldMetadata field)
+        private string MapField(FieldMetadata field)
         {
             if (field == null) throw new ArgumentNullException(nameof(field));
             if (string.IsNullOrWhiteSpace(field.Name)) throw new ArgumentException("Field name is required.", nameof(field));
