@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 namespace DbEntityMate.Core
 {
 
-    /// </para>
+    /// <summary>
+    /// Represents metadata information for a single field within an entity or table.
+    /// </summary>
+    /// <remarks>
     /// <para>
     /// This class is typically used to describe the schema of an entity or table, providing
     /// additional context for code generation, documentation, or runtime validation.
@@ -38,12 +41,24 @@ namespace DbEntityMate.Core
             set => this[nameof(Name)] = value;
         }
 
+        /// <summary>
+        /// Gets or sets the display name of the field.
+        /// </summary>
+        /// <remarks>
+        /// The <b>DisplayName</b> property provides a user-friendly name for the field, which can be used in UI or documentation.
+        /// </remarks>
         public string? DisplayName
         {
             get => (string?)this[nameof(DisplayName)];
             set => this[nameof(DisplayName)] = value;
         }
 
+        /// <summary>
+        /// Gets or sets the name of the parent entity that contains this field.
+        /// </summary>
+        /// <remarks>
+        /// The <b>ParentEntityName</b> property specifies the name of the entity or table to which this field belongs.
+        /// </remarks>
         public string? ParentEntityName
         {
             get => (string?)this[nameof(ParentEntityName)];
@@ -61,6 +76,18 @@ namespace DbEntityMate.Core
         {
             get => (bool?)this[nameof(IsUnique)] ?? false;
             set => this[nameof(IsUnique)] = value;
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the field is required.
+        /// </summary>
+        /// <remarks>
+        /// The <b>IsRequired</b> property specifies whether the field must have a value (i.e., cannot be null or empty).
+        /// </remarks>
+        public bool IsRequired
+        {
+            get => (bool?)this[nameof(IsRequired)] ?? false;
+            set => this[nameof(IsRequired)] = value;
         }
 
         /// <summary>
