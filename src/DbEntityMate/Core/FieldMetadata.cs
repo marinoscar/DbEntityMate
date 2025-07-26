@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace DbEntityMate.Core
 {
-    /// <summary>
-    /// Represents metadata information for a single field within an entity.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// The <b>FieldMetadata</b> class encapsulates descriptive and structural information about a field,
-    /// such as its name, data type, description, length, precision, sample values, and synonyms.
-    /// It inherits from <see cref="RecordBase"/>, enabling dynamic field storage and access.
+
     /// </para>
     /// <para>
     /// This class is typically used to describe the schema of an entity or table, providing
     /// additional context for code generation, documentation, or runtime validation.
+    /// </para>
+    /// <para>
+    /// <b>FieldMetadata</b> exposes strongly-typed properties for common field attributes, 
+    /// such as <see cref="Name"/>, <see cref="Type"/>, <see cref="Length"/>, and <see cref="Precision"/>.
+    /// All property values are stored in the dynamic field dictionary of <see cref="RecordBase"/>,
+    /// allowing for flexible extension and dynamic access.
+    /// </para>
+    /// <para>
+    /// This class is suitable for use in metadata-driven scenarios, such as dynamic form generation,
+    /// schema introspection, and automated documentation tools.
     /// </para>
     /// </remarks>
     public class FieldMetadata : RecordBase, IRecord
@@ -33,6 +36,31 @@ namespace DbEntityMate.Core
         {
             get => (string)this[nameof(Name)] ?? string.Empty;
             set => this[nameof(Name)] = value;
+        }
+
+        public string? DisplayName
+        {
+            get => (string?)this[nameof(DisplayName)];
+            set => this[nameof(DisplayName)] = value;
+        }
+
+        public string? ParentEntityName
+        {
+            get => (string?)this[nameof(ParentEntityName)];
+            set => this[nameof(ParentEntityName)] = value;
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the field is unique within its containing entity or table.
+        /// </summary>
+        /// <remarks>
+        /// The <b>IsUnique</b> property specifies whether the field must have unique values across all records.
+        /// This is typically used to enforce uniqueness constraints at the database or application level.
+        /// </remarks>
+        public bool IsUnique
+        {
+            get => (bool?)this[nameof(IsUnique)] ?? false;
+            set => this[nameof(IsUnique)] = value;
         }
 
         /// <summary>
