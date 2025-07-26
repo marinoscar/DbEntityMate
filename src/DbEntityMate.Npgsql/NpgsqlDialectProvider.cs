@@ -13,7 +13,7 @@ namespace DbEntityMate.Npgsql
     /// <remarks>This class includes functionality to create SQL statements for table creation, foreign key
     /// constraints, and primary key constraints, tailored for PostgreSQL databases. It ensures that constraints are
     /// only added if they do not already exist, preventing errors during repeated executions.</remarks>
-    public class NpgsqlDialectProvider
+    public class NpgsqlDialectProvider : IDialectProvider
     {
         /// <summary>
         /// Generates a PostgreSQL CREATE TABLE statement for the specified entity metadata.
