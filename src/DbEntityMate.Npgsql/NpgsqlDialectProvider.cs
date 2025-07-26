@@ -7,8 +7,21 @@ using System.Threading.Tasks;
 
 namespace DbEntityMate.Npgsql
 {
+    /// <summary>
+    /// Provides methods for generating PostgreSQL SQL statements based on entity metadata.
+    /// </summary>
+    /// <remarks>This class includes functionality to create SQL statements for table creation, foreign key
+    /// constraints, and primary key constraints, tailored for PostgreSQL databases. It ensures that constraints are
+    /// only added if they do not already exist, preventing errors during repeated executions.</remarks>
     public class NpgsqlDialectProvider
     {
+        /// <summary>
+        /// Generates a PostgreSQL CREATE TABLE statement for the specified entity metadata.
+        /// </summary>
+        /// <param name="entity">The entity metadata describing the table structure.</param>
+        /// <returns>A SQL string representing the CREATE TABLE statement.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="entity"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="entity"/> has no TableName or no fields.</exception>
         public string GetCreateTableStatement(EntityMetadata entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
@@ -36,6 +49,16 @@ namespace DbEntityMate.Npgsql
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Generates a PostgreSQL statement to add a foreign key constraint for the specified field, if it does not already exist.
+        /// </summary>
+        /// <param name="field">The field metadata representing the foreign key column.</param>
+        /// <returns>
+        /// A SQL string containing a DO block that checks for the existence of the foreign key constraint and adds it if missing.
+        /// Returns an empty string if <paramref name="field.ParentEntityName"/> is null or empty.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="field"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="field.TableName"/> or <paramref name="field.Name"/> is null or empty.</exception>
         public string CreateForeignKeyStatements(FieldMetadata field)
         {
             if (field == null) throw new ArgumentNullException(nameof(field));
@@ -65,6 +88,15 @@ namespace DbEntityMate.Npgsql
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Generates a PostgreSQL statement to add a primary key constraint to the specified entity's table, if it does not already exist.
+        /// </summary>
+        /// <param name="entity">The entity metadata for which to create the primary key constraint.</param>
+        /// <returns>
+        /// A SQL string containing a DO block that checks for the existence of the primary key constraint and adds it if missing.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="entity"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="entity.TableName"/> is null or empty.</exception>
         public string GetCreatePrimaryKeyStatement(EntityMetadata entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
@@ -159,6 +191,6 @@ namespace DbEntityMate.Npgsql
 
             return sb.ToString();
         }
-        
+
     }
 }
