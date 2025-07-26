@@ -53,6 +53,22 @@ namespace DbEntityMate.Core
             set => this[nameof(DisplayName)] = value;
         }
 
+
+        /// <summary>
+        /// Gets or sets the name of the table that contains this field.
+        /// </summary>
+        /// <remarks>
+        /// The <b>TableName</b> property specifies the name of the database table or entity
+        /// to which this field belongs. This is useful for scenarios where fields may be
+        /// described independently of their containing table or when generating documentation
+        /// or code that requires explicit table context.
+        /// </remarks>
+        public string TableName
+        {
+            get => (string)this[nameof(TableName)] ?? string.Empty;
+            set => this[nameof(TableName)] = value;
+        }
+
         /// <summary>
         /// Gets or sets the name of the parent entity that contains this field.
         /// </summary>
