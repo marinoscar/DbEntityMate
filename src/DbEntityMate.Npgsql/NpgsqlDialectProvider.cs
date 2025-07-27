@@ -49,6 +49,9 @@ namespace DbEntityMate.Npgsql
             return sb.ToString();
         }
 
+
+
+
         /// <summary>
         /// Generates a PostgreSQL statement to add a foreign key constraint for the specified field, if it does not already exist.
         /// </summary>
